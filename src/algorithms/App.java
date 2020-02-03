@@ -18,11 +18,7 @@ public class App {
 		int frequency = 0;
 		Map<Integer, Integer> map = new HashMap<Integer, Integer>();
 		for (int number : numbers) {
-			if (map.containsKey(number)) {
-				map.put(number, map.get(number).intValue() + 1);				
-			} else {
-				map.put(number, 1);
-			}
+			map.put(number, map.containsKey(number) ? map.get(number).intValue() + 1 : 1);
 		}
 		
 		for (Entry<Integer, Integer> x : map.entrySet()) {
@@ -65,9 +61,28 @@ public class App {
 		}
 	}
 	
+	public void exercise3() {
+		Integer numbers[] = {1, 1, 2, 5, 5, 3};
+		int key = 0;
+		Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+		for (Integer number : numbers) {
+			map.put(number, map.containsKey(number) ? map.get(number).intValue() + 1 : 1);
+		}
+		
+		for (Entry<Integer, Integer> entry : map.entrySet()) {
+			if (entry.getValue() == 1) {
+				key = entry.getKey();
+				break;
+			}
+		}
+		
+		System.out.println(key);
+	}
+	
 	public static void main(String[] args) {
 		App app = new App();
 		//app.exercise1();
-		app.exercise2();
+		//app.exercise2();
+		app.exercise3();
 	}
 }
